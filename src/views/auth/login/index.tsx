@@ -9,11 +9,11 @@ const LoginViews = () => {
   };
   return (
     <div className={styles.login}>
-      <h1>login page</h1>
+      <h1 className="text-3xl">login page</h1>
       <button onClick={() => handleLogin()}>Login</button>
       <p>
         Belum memiliki akun? registrasi{" "}
-        <Link href={"/auth/register"}>disini</Link>
+        <Link href={"/auth/register"} style={{ color: 'blue' }}>disini</Link>
       </p>
     </div>
   );
