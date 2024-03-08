@@ -1,5 +1,4 @@
 import AppShell from "@/components/layouts/AppShell";
-import Navbar from "@/components/layouts/navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
