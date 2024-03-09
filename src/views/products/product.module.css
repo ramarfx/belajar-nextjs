@@ -1,0 +1,27 @@
+.product {
+  width: 100%;
+  padding: 0 5%;
+}
+
+.product__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.skeleton{
+    @apply w-1/4 p-[10px];
+    animation: blinking 2s infinite;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

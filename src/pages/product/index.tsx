@@ -1,12 +1,8 @@
+import ProductView from "@/views/products";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
-type ProductType = {
-  id: number;
-  name: string;
-  price: number;
-  size: string;
-};
+import useSWR from "swr";
+import { fetcher } from "../../../lib/swr/fetcher";
 
 const ProductPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,23 +13,21 @@ const ProductPage = () => {
     if (!isLogin) {
       push("/auth/login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLogin, push]);
 
-  useEffect(() => {
-    fetch("/api/product")
-      .then((res) => res.json())
-      .then((res) => {
-        setProducts(res.data);
-      });
-  }, []);
+  const { data, error, isLoading } = useSWR("/api/product", fetcher);
+  
+  // useEffect(() => {
+  //   fetch("/api/product")
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setProducts(res.data);
+  //     });
+  // }, []);
 
   return (
     <div>
-      <p>Product Page</p>
-      {products.map((product: ProductType) => {
-        return <div key={product.id}>{product.name}</div>;
-      })}
+      <ProductView products={isLoading ? [] : data.data} />
     </div>
   );
 };
