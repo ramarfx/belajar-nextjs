@@ -15,7 +15,6 @@ export default ProductPage;
 export async function getStaticProps() {
   const res = await fetch("http://localhost:3000/api/product");
   const response = await res.json();
-  console.log(response);
 
   return {
     props: {
