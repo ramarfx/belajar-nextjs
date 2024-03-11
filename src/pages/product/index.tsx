@@ -6,7 +6,6 @@ import { fetcher } from "../../../lib/swr/fetcher";
 
 const ProductPage = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [products, setProducts] = useState([]);
   const { push } = useRouter();
 
   useEffect(() => {
